@@ -113,7 +113,7 @@
 		64C55369244795A100DA89FA /* AppStoreClone */ = {
 			isa = PBXGroup;
 			children = (
-				64FD119B24479FED002C4E02 /* Lib */,
+				64FD119B24479FED002C4E02 /* Extensions   */,
 				64FD119924479FD5002C4E02 /* Model */,
 				64FD119A24479FDC002C4E02 /* View */,
 				64C5539A244795BF00DA89FA /* Controller */,
@@ -185,7 +185,7 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		64FD119B24479FED002C4E02 /* Lib */ = {
+		64FD119B24479FED002C4E02 /* Extensions   */ = {
 			isa = PBXGroup;
 			children = (
 				64FD119C2447A02F002C4E02 /* UIView.swift */,
@@ -194,7 +194,7 @@
 				647BB22B2447CA3200685348 /* UIGetButton.swift */,
 				647BB22D2447CA9B00685348 /* UIColor.swift */,
 			);
-			path = Lib;
+			path = "Extensions  ";
 			sourceTree = "<group>";
 		};
 		64FD11A02447A28D002C4E02 /* Search */ = {

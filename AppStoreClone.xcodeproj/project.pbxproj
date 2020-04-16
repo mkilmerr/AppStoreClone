@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		647BB22C2447CA3200685348 /* UIGetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647BB22B2447CA3200685348 /* UIGetButton.swift */; };
 		647BB22E2447CA9B00685348 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647BB22D2447CA9B00685348 /* UIColor.swift */; };
+		6483FB982448FAFB00D3D374 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6483FB972448FAFB00D3D374 /* SearchService.swift */; };
+		6483FB9A2449169F00D3D374 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6483FB992449169F00D3D374 /* AppModel.swift */; };
 		64C5536B244795A100DA89FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C5536A244795A100DA89FA /* AppDelegate.swift */; };
 		64C5536D244795A100DA89FA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C5536C244795A100DA89FA /* SceneDelegate.swift */; };
 		64C55372244795A100DA89FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64C55370244795A100DA89FA /* Main.storyboard */; };
@@ -44,6 +46,8 @@
 /* Begin PBXFileReference section */
 		647BB22B2447CA3200685348 /* UIGetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGetButton.swift; sourceTree = "<group>"; };
 		647BB22D2447CA9B00685348 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		6483FB972448FAFB00D3D374 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
+		6483FB992449169F00D3D374 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		64C55367244795A100DA89FA /* AppStoreClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStoreClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64C5536A244795A100DA89FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64C5536C244795A100DA89FA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +94,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6483FB952448FAD500D3D374 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				6483FB962448FAE700D3D374 /* Search */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		6483FB962448FAE700D3D374 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				6483FB972448FAFB00D3D374 /* SearchService.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		64C5535E244795A100DA89FA = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +133,7 @@
 		64C55369244795A100DA89FA /* AppStoreClone */ = {
 			isa = PBXGroup;
 			children = (
+				6483FB952448FAD500D3D374 /* Services */,
 				64FD119B24479FED002C4E02 /* Extensions   */,
 				64FD119924479FD5002C4E02 /* Model */,
 				64FD119A24479FDC002C4E02 /* View */,
@@ -173,6 +194,7 @@
 		64FD119924479FD5002C4E02 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6483FB992449169F00D3D374 /* AppModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -339,9 +361,11 @@
 				64FD119D2447A02F002C4E02 /* UIView.swift in Sources */,
 				64C5536B244795A100DA89FA /* AppDelegate.swift in Sources */,
 				64C5536D244795A100DA89FA /* SceneDelegate.swift in Sources */,
+				6483FB982448FAFB00D3D374 /* SearchService.swift in Sources */,
 				64FD11A22447A2B9002C4E02 /* SearchCell.swift in Sources */,
 				64C553A024479B4500DA89FA /* SearchViewController.swift in Sources */,
 				64FD119F2447A05B002C4E02 /* UIImageView.swift in Sources */,
+				6483FB9A2449169F00D3D374 /* AppModel.swift in Sources */,
 				647BB22C2447CA3200685348 /* UIGetButton.swift in Sources */,
 				64FD11A42447A46C002C4E02 /* UILabel.swift in Sources */,
 				64C5539C244795DD00DA89FA /* BaseTabBarViewController.swift in Sources */,

@@ -19,7 +19,7 @@ class BaseTabBarViewController: UITabBarController {
         
         let appsViewController = creteTabBarAndNavItems(viewController: UIViewController(), title: "Apps", imageName: "icone-apps")
         
-        let searchViewController = creteTabBarAndNavItems(viewController: SearchViewController(), title: "Procurar", imageName: "icone-busca")
+        let searchViewController = creteTabBarAndNavItems(viewController: SearchViewController(), title: "Busca", imageName: "icone-busca")
         
         viewControllers = [
             todayViewController,

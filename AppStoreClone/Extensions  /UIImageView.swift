@@ -23,5 +23,15 @@ extension UIImageView{
         return iconImageView
     }
     
+    static func setupScreenshotImages() -> UIImageView{
+        let screenshot = UIImageView()
+        screenshot.backgroundColor = .purple
+        screenshot.layer.cornerRadius = 12
+        screenshot.layer.borderColor = UIColor(white: 0.5, alpha: 1).cgColor
+        screenshot.clipsToBounds = true
+        screenshot.contentMode = .scaleAspectFill
+        return screenshot
+        
+    }
     
 }

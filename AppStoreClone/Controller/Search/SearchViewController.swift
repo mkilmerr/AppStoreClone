@@ -10,7 +10,7 @@ import UIKit
 
 class SearchViewController: UITableViewController,UISearchBarDelegate {
     let cellID = "searchCellID"
-    var apps:[AppModel]?
+    var apps:[AppModel] = []
     let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
@@ -29,12 +29,36 @@ class SearchViewController: UITableViewController,UISearchBarDelegate {
         self.searchController.obscuresBackgroundDuringPresentation = false
         self.searchController.searchBar.placeholder = "App Store"
         self.searchController.searchBar.delegate = self
-       
+        
     }
     
     
     
 }
+
+//MARK:- SearchBar Methods
+
+extension SearchViewController{
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        SearchService.sharedSearchService.fetchApp(textInput: searchText) { (apps,err) in
+            if err != nil {
+                print(err!)
+                return
+            }
+            if let apps = apps {
+                DispatchQueue.main.async {
+                    self.apps = apps
+                    self.tableView.reloadData()
+                }
+            }
+    
+        }
+    }
+    
+   
+}
+
 
 //MARK:- TableView Methods
 
@@ -47,31 +71,13 @@ extension SearchViewController{
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        5
+        return self.apps.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! SearchCell
+        cell.apps = self.apps[indexPath.item]
         return cell
     }
     
-}
-//MARK:- SearchBar Methods
-
-extension SearchViewController{
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-    
-        SearchService.sharedSearchService.fetchApp(textInput: searchText) { (apps,err) in
-            if err != nil {
-                print(err!)
-                return
-            }
-            if let apps = apps {
-                DispatchQueue.main.async {
-                    
-                    self.tableView.reloadData()
-                }
-            }
-        }
-    }
 }

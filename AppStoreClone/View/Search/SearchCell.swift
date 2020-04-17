@@ -9,6 +9,28 @@
 import UIKit
 
 class SearchCell:UITableViewCell{
+    
+    var apps:AppModel!{
+        didSet{
+            titleLabel.text = apps.nome
+            companyLabel.text = apps.empresa
+            
+            DispatchQueue.main.async {
+                if let url = URL(string: self.apps.iconeUrl) {
+                    do{
+                        let data = try Data(contentsOf: url)
+                        self.iconImageView.image = UIImage(data: data)
+                    }catch{
+                        print(error)
+                    }
+                }
+                
+               
+                
+            }
+        }
+    }
+    
     let iconImageView:UIImageView = .setupIconImageView()
     let titleLabel:UILabel = .setupLabel(title: "Name of app", fontSize: 18, numberOfLines: 2)
     let companyLabel:UILabel = .setupLabel(title: "Company", fontSize: 14)

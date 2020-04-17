@@ -14,7 +14,7 @@ class SearchService{
     static let sharedSearchService = SearchService()
     
     func fetchApp(textInput:String, completion: @escaping ([AppModel]?,Error?) ->()){
-        let url = URL(string: "https://api.euprogramador.app/app-store/v1/apps?search=uber")
+        let url = URL(string: "https://api.euprogramador.app/app-store/v1/apps?search=\(textInput)")
         
         if let url = url {
             URLSession.shared.dataTask(with: url) { (data, res, err) in

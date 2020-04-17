@@ -42,7 +42,7 @@ class BaseTabBarViewController: UITabBarController {
         viewController.tabBarItem.title = title
         viewController.tabBarItem.image = UIImage(named: imageName)
         viewController.view.backgroundColor = .white
-        
+       
         return navigationController
         
     }

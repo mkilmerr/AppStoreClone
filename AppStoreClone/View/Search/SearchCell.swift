@@ -7,27 +7,28 @@
 //
 
 import UIKit
-
+import SDWebImage
 class SearchCell:UITableViewCell{
     
     var apps:AppModel!{
         didSet{
             titleLabel.text = apps.nome
             companyLabel.text = apps.empresa
+            iconImageView.sd_setImage(with: URL(string: apps.iconeUrl), completed: nil)
             
-            DispatchQueue.main.async {
-                if let url = URL(string: self.apps.iconeUrl) {
-                    do{
-                        let data = try Data(contentsOf: url)
-                        self.iconImageView.image = UIImage(data: data)
-                    }catch{
-                        print(error)
-                    }
+            if let screenshots = apps.screenshotUrls {
+                if screenshots.count > 0 {
+                    self.firstScreenshot.sd_setImage(with: URL(string: screenshots[0]), completed: nil)
+                }
+                if screenshots.count > 1 {
+                    self.secondScreenshot.sd_setImage(with: URL(string: screenshots[1]), completed: nil)
+                }
+                if screenshots.count > 2 {
+                    self.thirdScreenshot.sd_setImage(with: URL(string: screenshots[2]), completed: nil)
                 }
                 
-               
-                
             }
+            
         }
     }
     
@@ -67,3 +68,20 @@ class SearchCell:UITableViewCell{
         fatalError()
     }
 }
+
+
+/*
+ DispatchQueue.main.async {
+     if let url = URL(string: self.apps.iconeUrl) {
+         do{
+             let data = try Data(contentsOf: url)
+             self.iconImageView.image = UIImage(data: data)
+         }catch{
+             print(error)
+         }
+     }
+     
+    
+     
+ }
+ */

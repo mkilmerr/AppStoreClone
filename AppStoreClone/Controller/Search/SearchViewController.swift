@@ -10,6 +10,7 @@ import UIKit
 
 class SearchViewController: UITableViewController,UISearchBarDelegate {
     let cellID = "searchCellID"
+    var apps:[AppModel]?
     let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
@@ -60,6 +61,17 @@ extension SearchViewController{
 extension SearchViewController{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
     
-        SearchService.sharedSearchService.fetchApp(textInput: searchText)
+        SearchService.sharedSearchService.fetchApp(textInput: searchText) { (apps,err) in
+            if err != nil {
+                print(err!)
+                return
+            }
+            if let apps = apps {
+                DispatchQueue.main.async {
+                    
+                    self.tableView.reloadData()
+                }
+            }
+        }
     }
 }

@@ -7,8 +7,7 @@ App Store clone made with Swift
 > App Store Clone made with Swift
 
 ## Author
-
-👤 **mkilmer**
+![alt text](https://avatars2.githubusercontent.com/u/34096743?s=460&u=c94dd4347d3ed70d20cabd628bb43dc7c1f6b8c8&v=4) **mkilmer**
 
 * Website: https://dev.to/mkilmer
 * Github: [@mkilmerr](https://github.com/mkilmerr)

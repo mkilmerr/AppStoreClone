@@ -10,6 +10,7 @@ import UIKit
 
 class AppsViewController:UICollectionViewController,UICollectionViewDelegateFlowLayout{
     let collectionID = "collectionID"
+    let headerID = "headerID"
     init(){
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
     }
@@ -23,15 +24,30 @@ class AppsViewController:UICollectionViewController,UICollectionViewDelegateFlow
         collectionView.backgroundColor = .white
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(UICollectionViewCell.self,forCellWithReuseIdentifier: collectionID)
+        collectionView.register(AppHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerID)
+        collectionView?.register(UICollectionViewCell.self,forCellWithReuseIdentifier: collectionID)
     }
     
 }
 
 extension AppsViewController {
     
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerID, for: indexPath) as! AppHeader
+    
+        return header
+    }
+    
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return .init(width: view.bounds.width, height: view.bounds.width * 0.8)
+    }
+    
+  
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 10
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -40,5 +56,8 @@ extension AppsViewController {
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return .init(width: view.bounds.width, height: 250)
+    }
    
 }

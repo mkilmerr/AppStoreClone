@@ -12,6 +12,7 @@ class SearchCell:UITableViewCell{
     
     var apps:AppModel!{
         didSet{
+            
             titleLabel.text = apps.nome
             companyLabel.text = apps.empresa
             iconImageView.sd_setImage(with: URL(string: apps.iconeUrl), completed: nil)

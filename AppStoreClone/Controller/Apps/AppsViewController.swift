@@ -11,6 +11,7 @@ import UIKit
 class AppsViewController:UICollectionViewController,UICollectionViewDelegateFlowLayout{
     let collectionID = "collectionID"
     let headerID = "headerID"
+    var featuredApps:[FeaturedAppsModel] = []
     init(){
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
     }
@@ -26,6 +27,8 @@ class AppsViewController:UICollectionViewController,UICollectionViewDelegateFlow
         collectionView.dataSource = self
         collectionView.register(AppHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerID)
         collectionView?.register(UICollectionViewCell.self,forCellWithReuseIdentifier: collectionID)
+        
+        
     }
     
 }
@@ -33,8 +36,9 @@ class AppsViewController:UICollectionViewController,UICollectionViewDelegateFlow
 extension AppsViewController {
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerID, for: indexPath) as! AppHeader
-    
+      
         return header
     }
     
@@ -61,3 +65,5 @@ extension AppsViewController {
     }
    
 }
+
+

@@ -10,7 +10,7 @@ import UIKit
 
 class AppHeader:UICollectionReusableView,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     let headerID = "header"
-    
+    var featuredApps:[FeaturedAppsModel] = []
     
     var collectionView:UICollectionView!
     override init(frame: CGRect) {
@@ -24,11 +24,13 @@ class AppHeader:UICollectionReusableView,UICollectionViewDelegate,UICollectionVi
         self.collectionView.dataSource = self
         self.collectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         self.collectionView.register(AppHeaderCell.self, forCellWithReuseIdentifier: headerID)
-         addSubview(collectionView)
+        self.collectionView.decelerationRate = .fast
+        self.collectionView.showsVerticalScrollIndicator = false
+        addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.fillAllScreen()
-       
         
+        fetchApps()
     }
     required init?(coder: NSCoder) {
         fatalError()
@@ -39,12 +41,12 @@ class AppHeader:UICollectionReusableView,UICollectionViewDelegate,UICollectionVi
 
 extension AppHeader{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return self.featuredApps.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let header = collectionView.dequeueReusableCell(withReuseIdentifier:headerID, for: indexPath) as! AppHeaderCell
-       
+        header.featuredApps = self.featuredApps[indexPath.item]
         return header
     }
     
@@ -53,3 +55,20 @@ extension AppHeader{
     }
 }
 
+extension AppHeader{
+    func fetchApps(){
+        FeaturedApps.shared.fetchFeaturedApps { (apps, error) in
+            if error != nil {
+                print(error!)
+                return
+            }
+            
+            if let apps = apps {
+                DispatchQueue.main.async {
+                    self.featuredApps = apps
+                    self.collectionView.reloadData()
+                }
+            }
+        }
+    }
+}

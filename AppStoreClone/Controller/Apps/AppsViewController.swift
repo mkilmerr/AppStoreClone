@@ -26,7 +26,7 @@ class AppsViewController:UICollectionViewController,UICollectionViewDelegateFlow
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(AppHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerID)
-        collectionView?.register(UICollectionViewCell.self,forCellWithReuseIdentifier: collectionID)
+        collectionView?.register(AppsGroupCell.self,forCellWithReuseIdentifier: collectionID)
         
         
     }
@@ -42,7 +42,9 @@ extension AppsViewController {
         return header
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+           return .init(top: 20, left: 0, bottom: 0, right: 0)
+       }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return .init(width: view.bounds.width, height: view.bounds.width * 0.8)
@@ -55,8 +57,8 @@ extension AppsViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier:collectionID , for: indexPath)
-        cell.backgroundColor = .red
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier:collectionID , for: indexPath) as! AppsGroupCell
+        
         return cell
     }
     

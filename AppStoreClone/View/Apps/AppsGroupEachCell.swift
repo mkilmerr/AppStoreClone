@@ -1,0 +1,40 @@
+//
+//  AppsGroupEachCell.swift
+//  AppStoreClone
+//
+//  Created by Marcos Kilmer on 23/04/20.
+//  Copyright © 2020 mkilmer. All rights reserved.
+//
+
+import UIKit
+
+
+class AppsGroupEachCell:UICollectionViewCell{
+    let iconImage:UIImageView = .setupIconImageView()
+    let appName:UILabel = .setupLabel(title: "nome do app", fontSize: 18)
+    let companyName:UILabel = .setupLabel(title: "nome da empresa", fontSize: 14)
+    let getButton:UIButton = .setupGetButton()
+    override init(frame: CGRect) {
+        super.init(frame:frame)
+        
+        let bottomLine = CALayer()
+        bottomLine.frame = CGRect(x: 80, y: bounds.height, width: bounds.width - 80, height: 0.8)
+        bottomLine.backgroundColor = UIColor.bottomLine.cgColor
+        layer.addSublayer(bottomLine)
+    
+        let appAndCompanyStack = UIStackView(arrangedSubviews: [appName,companyName])
+        appAndCompanyStack.spacing = 2
+        appAndCompanyStack.axis = .vertical
+        
+        let stackView = UIStackView(arrangedSubviews: [iconImage,appAndCompanyStack,getButton])
+        stackView.spacing = 8
+        stackView.alignment = .center
+        addSubview(stackView)
+        
+        stackView.setAutoLayoutProperties(top: topAnchor, trailing: trailingAnchor, bottom: bottomAnchor, leading: leadingAnchor,padding: .init(top: 0, left: 4, bottom: 0, right: 0))
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
+}

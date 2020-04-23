@@ -18,4 +18,15 @@ extension UILabel{
         
         return label
     }
+    
+    static func setupLabelGroup(title:String,fontSize:CGFloat,numberOfLines:Int=1) -> UILabel{
+        let label = UILabel()
+        label.text = title
+        label.font = UIFont.systemFont(ofSize: fontSize)
+        label.font = UIFont.boldSystemFont(ofSize: fontSize)
+        label.numberOfLines = numberOfLines
+        
+        return label
+    }
+    
 }

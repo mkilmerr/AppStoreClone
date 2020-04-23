@@ -16,4 +16,5 @@ extension UIColor{
     
     static let blueGetButton = UIColor(r: 0, g: 118, b: 244)
     static let grayGetButton = UIColor(white: 0.95, alpha: 1)
+    static let bottomLine = UIColor(r: 158, g: 158, b: 158)
 }

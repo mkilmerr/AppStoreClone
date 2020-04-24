@@ -11,6 +11,9 @@ import UIKit
 
 class AppsGroupViewController:UICollectionViewController,UICollectionViewDelegateFlowLayout{
     let cellGroupsID = "ID"
+    var appsGroupsArray:[AppsGroup] = []
+    var apps:[AppModel] = []
+    
     init() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -29,8 +32,9 @@ class AppsGroupViewController:UICollectionViewController,UICollectionViewDelegat
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         collectionView.decelerationRate = .fast
         collectionView.showsVerticalScrollIndicator = false
-
+       
         collectionView.register(AppsGroupEachCell.self, forCellWithReuseIdentifier: cellGroupsID)
+        
     }
 }
 
@@ -51,12 +55,12 @@ extension AppsGroupViewController{
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 9
+        return self.apps.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellGroupsID, for: indexPath) as! AppsGroupEachCell
-      
+        cell.apps = self.apps[indexPath.item]
         return cell
     }
 }

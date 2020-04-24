@@ -11,7 +11,7 @@ import UIKit
 class AppHeader:UICollectionReusableView,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     let headerID = "header"
     var featuredApps:[FeaturedAppsModel] = []
-    
+   
     var collectionView:UICollectionView!
     override init(frame: CGRect) {
         super.init(frame: frame)

@@ -12,6 +12,9 @@ class AppsViewController:UICollectionViewController,UICollectionViewDelegateFlow
     let collectionID = "collectionID"
     let headerID = "headerID"
     var featuredApps:[FeaturedAppsModel] = []
+    var appsGroupsArray:[AppsGroup] = []
+  
+ 
     init(){
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
     }
@@ -28,7 +31,10 @@ class AppsViewController:UICollectionViewController,UICollectionViewDelegateFlow
         collectionView.register(AppHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerID)
         collectionView?.register(AppsGroupCell.self,forCellWithReuseIdentifier: collectionID)
         
-        
+      
+        fetchGroups(type: "top-apps-pagos")
+        fetchGroups(type: "apps-que-amamos")
+        fetchGroups(type: "top-apps-gratis")
     }
     
 }
@@ -53,12 +59,12 @@ extension AppsViewController {
   
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return self.appsGroupsArray.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier:collectionID , for: indexPath) as! AppsGroupCell
-        
+        cell.appsGroup = self.appsGroupsArray[indexPath.item]
         return cell
     }
     
@@ -69,3 +75,21 @@ extension AppsViewController {
 }
 
 
+
+extension AppsViewController{
+    func fetchGroups(type:String){
+        AppsGroupService.shared.fetchGroups(type: type) { (apps, error) in
+            if error != nil {
+                return
+            }
+            
+            if let apps = apps {
+                DispatchQueue.main.async {
+                    self.appsGroupsArray.append(apps)
+                    self.collectionView.reloadData()
+                     print(self.appsGroupsArray.count)
+                }
+            }
+        }
+    }
+}

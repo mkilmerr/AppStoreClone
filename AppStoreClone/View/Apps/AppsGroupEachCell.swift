@@ -7,9 +7,18 @@
 //
 
 import UIKit
-
+import SDWebImage
 
 class AppsGroupEachCell:UICollectionViewCell{
+    var apps:AppModel?{
+        didSet{
+            if let apps = apps {
+                iconImage.sd_setImage(with: URL(string:apps.iconeUrl), completed: nil)
+                appName.text = apps.nome
+                companyName.text = apps.empresa
+            }
+        }
+    }
     let iconImage:UIImageView = .setupIconImageView()
     let appName:UILabel = .setupLabel(title: "nome do app", fontSize: 18)
     let companyName:UILabel = .setupLabel(title: "nome da empresa", fontSize: 14)

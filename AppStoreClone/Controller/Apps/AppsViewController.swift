@@ -13,8 +13,11 @@ class AppsViewController:UICollectionViewController,UICollectionViewDelegateFlow
     let headerID = "headerID"
     var featuredApps:[FeaturedAppsModel] = []
     var appsGroupsArray:[AppsGroup] = []
-  
- 
+    
+    let appsGroupViewController = AppsGroupViewController()
+    let appsDetail = AppsDetail()
+    
+    
     init(){
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
     }
@@ -44,19 +47,19 @@ extension AppsViewController {
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerID, for: indexPath) as! AppHeader
-      
+        header.featuredApps = self.featuredApps
         return header
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-           return .init(top: 20, left: 0, bottom: 0, right: 0)
-       }
+        return .init(top: 20, left: 0, bottom: 0, right: 0)
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return .init(width: view.bounds.width, height: view.bounds.width * 0.8)
     }
     
-  
+    
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.appsGroupsArray.count
@@ -65,13 +68,17 @@ extension AppsViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier:collectionID , for: indexPath) as! AppsGroupCell
         cell.appsGroup = self.appsGroupsArray[indexPath.item]
+        cell.appsGroupViewController.callback = {(app) in
+          
+            self.navigationController?.pushViewController(self.appsDetail, animated: true)
+        }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return .init(width: view.bounds.width, height: 250)
     }
-   
+    
 }
 
 
@@ -87,7 +94,25 @@ extension AppsViewController{
                 DispatchQueue.main.async {
                     self.appsGroupsArray.append(apps)
                     self.collectionView.reloadData()
-                     print(self.appsGroupsArray.count)
+                    print(self.appsGroupsArray.count)
+                }
+            }
+        }
+    }
+}
+
+extension AppsViewController{
+    func fetchApps(){
+        FeaturedApps.shared.fetchFeaturedApps { (apps, error) in
+            if error != nil {
+                print(error!)
+                return
+            }
+            
+            if let apps = apps {
+                DispatchQueue.main.async {
+                    self.featuredApps = apps
+                    self.collectionView.reloadData()
                 }
             }
         }

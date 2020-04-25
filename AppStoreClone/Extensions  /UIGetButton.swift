@@ -14,7 +14,7 @@ extension UIButton{
     static func setupGetButton() -> UIButton {
         let getButton = UIButton()
         getButton.backgroundColor = UIColor.grayGetButton
-        getButton.setTitle("GET", for: .normal)
+        getButton.setTitle("OBTER", for: .normal)
         getButton.setTitleColor(UIColor.blueGetButton, for: .normal)
         getButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         getButton.layer.cornerRadius = 16

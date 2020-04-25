@@ -14,6 +14,8 @@ class AppsGroupViewController:UICollectionViewController,UICollectionViewDelegat
     var appsGroupsArray:[AppsGroup] = []
     var apps:[AppModel] = []
     
+    var callback:((AppModel)->())?
+    
     init() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -62,5 +64,9 @@ extension AppsGroupViewController{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellGroupsID, for: indexPath) as! AppsGroupEachCell
         cell.apps = self.apps[indexPath.item]
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.callback?(self.apps[indexPath.item])
     }
 }

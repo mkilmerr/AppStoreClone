@@ -12,11 +12,19 @@ import SDWebImage
 class AppsGroupEachCell:UICollectionViewCell{
     var apps:AppModel?{
         didSet{
+            let indicator = UIActivityIndicatorView.init(style: .large)
+            indicator.startAnimating()
+            indicator.center = center
+                
             if let apps = apps {
                 iconImage.sd_setImage(with: URL(string:apps.iconeUrl), completed: nil)
                 appName.text = apps.nome
                 companyName.text = apps.empresa
+                
+                indicator.stopAnimating()
             }
+            
+            addSubview(indicator)
         }
     }
     let iconImage:UIImageView = .setupIconImageView()
@@ -40,7 +48,8 @@ class AppsGroupEachCell:UICollectionViewCell{
         stackView.alignment = .center
         addSubview(stackView)
         
-        stackView.setAutoLayoutProperties(top: topAnchor, trailing: trailingAnchor, bottom: bottomAnchor, leading: leadingAnchor,padding: .init(top: 0, left: 4, bottom: 0, right: 0))
+        stackView.setAutoLayoutProperties(top: topAnchor, trailing: trailingAnchor, bottom: bottomAnchor, leading: leadingAnchor,padding: .init(top: 0, left: 0, bottom: 0, right: 0))
+        
     }
     
     required init?(coder: NSCoder) {

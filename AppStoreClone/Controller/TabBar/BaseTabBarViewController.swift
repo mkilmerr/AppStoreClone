@@ -15,7 +15,7 @@ class BaseTabBarViewController: UITabBarController {
         view.backgroundColor = .white
         
         //MARK:- Tab Bar Items
-        let todayViewController = creteTabBarAndNavItems(viewController: UIViewController(), title: "Hoje", imageName: "icone-hoje")
+        let todayViewController = creteTabBarAndNavItems(viewController: TodayViewController(), title: "Hoje", imageName: "icone-hoje")
         
         let appsViewController = creteTabBarAndNavItems(viewController: AppsViewController(), title: "Apps", imageName: "icone-apps")
         

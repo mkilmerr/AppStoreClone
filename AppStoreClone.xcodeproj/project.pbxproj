@@ -32,6 +32,9 @@
 		64C5538D244795A500DA89FA /* AppStoreCloneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C5538C244795A500DA89FA /* AppStoreCloneUITests.swift */; };
 		64C5539C244795DD00DA89FA /* BaseTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C5539B244795DD00DA89FA /* BaseTabBarViewController.swift */; };
 		64C553A024479B4500DA89FA /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C5539F24479B4500DA89FA /* SearchViewController.swift */; };
+		64EE7DB6245774690090CC2A /* AppsDescriiptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EE7DB5245774690090CC2A /* AppsDescriiptionCell.swift */; };
+		64EE7DB824577E5B0090CC2A /* AppsDetailScreenshotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EE7DB724577E5B0090CC2A /* AppsDetailScreenshotViewController.swift */; };
+		64EE7DBA24577FD40090CC2A /* AppsDetailScreenshotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EE7DB924577FD40090CC2A /* AppsDetailScreenshotCell.swift */; };
 		64F879CA244F58790042BD25 /* FeaturedApps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F879C9244F58790042BD25 /* FeaturedApps.swift */; };
 		64F879CC244F59750042BD25 /* FeaturedAppsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F879CB244F59750042BD25 /* FeaturedAppsModel.swift */; };
 		64FD119D2447A02F002C4E02 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FD119C2447A02F002C4E02 /* UIView.swift */; };
@@ -91,6 +94,9 @@
 		64C5538E244795A500DA89FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64C5539B244795DD00DA89FA /* BaseTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarViewController.swift; sourceTree = "<group>"; };
 		64C5539F24479B4500DA89FA /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		64EE7DB5245774690090CC2A /* AppsDescriiptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsDescriiptionCell.swift; sourceTree = "<group>"; };
+		64EE7DB724577E5B0090CC2A /* AppsDetailScreenshotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsDetailScreenshotViewController.swift; sourceTree = "<group>"; };
+		64EE7DB924577FD40090CC2A /* AppsDetailScreenshotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsDetailScreenshotCell.swift; sourceTree = "<group>"; };
 		64F879C9244F58790042BD25 /* FeaturedApps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedApps.swift; sourceTree = "<group>"; };
 		64F879CB244F59750042BD25 /* FeaturedAppsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedAppsModel.swift; sourceTree = "<group>"; };
 		64FD119C2447A02F002C4E02 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
@@ -172,6 +178,7 @@
 				6424EA762449F493006AFB5F /* AppsViewController.swift */,
 				6451090C2451A1DB007F8C8D /* AppGroupsViewController.swift */,
 				640AA6572454C2DB006885EC /* AppsDetail.swift */,
+				64EE7DB724577E5B0090CC2A /* AppsDetailScreenshotViewController.swift */,
 			);
 			path = Apps;
 			sourceTree = "<group>";
@@ -199,6 +206,8 @@
 				646479B4244FABF000515EAB /* AppsGroupCell.swift */,
 				6451090E2451A6CD007F8C8D /* AppsGroupEachCell.swift */,
 				640AA6592454CA4B006885EC /* AppsDetailHeader.swift */,
+				64EE7DB5245774690090CC2A /* AppsDescriiptionCell.swift */,
+				64EE7DB924577FD40090CC2A /* AppsDetailScreenshotCell.swift */,
 			);
 			path = Apps;
 			sourceTree = "<group>";
@@ -599,10 +608,12 @@
 				6468B87C244E0A2700DBA875 /* HeaderCollection.swift in Sources */,
 				64C5536D244795A100DA89FA /* SceneDelegate.swift in Sources */,
 				643A950B245255850073D122 /* AppsGroupService.swift in Sources */,
+				64EE7DB6245774690090CC2A /* AppsDescriiptionCell.swift in Sources */,
 				646479B5244FABF000515EAB /* AppsGroupCell.swift in Sources */,
 				6483FB982448FAFB00D3D374 /* SearchService.swift in Sources */,
 				640E03C5244FADCF0049BA25 /* AppsGroup.swift in Sources */,
 				6424EA772449F493006AFB5F /* AppsViewController.swift in Sources */,
+				64EE7DB824577E5B0090CC2A /* AppsDetailScreenshotViewController.swift in Sources */,
 				64FD11A22447A2B9002C4E02 /* SearchCell.swift in Sources */,
 				64C553A024479B4500DA89FA /* SearchViewController.swift in Sources */,
 				640AA6562454B58C006885EC /* TodayViewController.swift in Sources */,
@@ -617,6 +628,7 @@
 				640AA65A2454CA4B006885EC /* AppsDetailHeader.swift in Sources */,
 				647EE03D244E2EDA004D2A37 /* AppHeaderCell.swift in Sources */,
 				64C5539C244795DD00DA89FA /* BaseTabBarViewController.swift in Sources */,
+				64EE7DBA24577FD40090CC2A /* AppsDetailScreenshotCell.swift in Sources */,
 				647BB22E2447CA9B00685348 /* UIColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

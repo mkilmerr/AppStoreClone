@@ -10,7 +10,7 @@ import UIKit
 
 class AppsDetailScreenshotCell:UICollectionViewCell,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
     let screenshotID = "screenshotID"
-    let previewLabel:UILabel = .setupLabel(title: "Pré-visualizacao", fontSize: 24)
+    let previewLabel:UILabel = .setupBoldLabel(title: "Pré-visualização", fontSize: 24)
     
     var collectionView:UICollectionView!
     override init(frame: CGRect) {

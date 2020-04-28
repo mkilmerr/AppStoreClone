@@ -9,8 +9,8 @@
 import UIKit
 
 class AppsDescriptionCell:UICollectionViewCell{
-    let newsLabel:UILabel = .setupLabel(title: "Novidades", fontSize: 24)
-    let descriptionLabel:UILabel = .setupLabel(title: "Hello hello Hello helloHello helloHello helloHello helloHello helloHello helloHello hello", fontSize: 18,numberOfLines: 0)
+    let newsLabel:UILabel = .setupBoldLabel(title: "Novidades", fontSize: 24)
+    let descriptionLabel:UILabel = .setupLabel(title: "Hello hello Hello helloHello helloHello helloHello helloHello helloHello helloHello hello", fontSize: 14,numberOfLines: 0)
     override init(frame: CGRect) {
         super.init(frame: frame)
         

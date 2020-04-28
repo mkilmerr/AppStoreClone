@@ -7,8 +7,20 @@
 //
 
 import UIKit
+import SDWebImage
 
 class AppsDetailHeader:UICollectionViewCell{
+    
+    var app:AppModel!{
+        didSet{
+            if let app = app {
+                iconImage.sd_setImage(with: URL(string: app.iconeUrl), completed: nil)
+                appName.text = app.nome
+                companyname.text = app.empresa
+            }
+            
+        }
+    }
     let iconImage:UIImageView = .setupIconImageView(height: 128, width: 128)
     let appName:UILabel = .setupLabel(title: "app name", fontSize: 20)
     let companyname:UILabel = .setupLabel(title: "company name", fontSize: 18)
@@ -34,4 +46,6 @@ class AppsDetailHeader:UICollectionViewCell{
     required init?(coder: NSCoder) {
         fatalError()
     }
+    
+    
 }

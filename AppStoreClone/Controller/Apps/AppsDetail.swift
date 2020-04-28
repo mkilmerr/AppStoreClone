@@ -13,6 +13,18 @@ class AppsDetail:UICollectionViewController,UICollectionViewDelegateFlowLayout{
     let detailID = "ID"
     let descriptionID = "DID"
     let screenshot = "SCREENSHOT_ID"
+    let commentdID = "COMMENT"
+    var app:AppModel!
+    
+    
+    let activityLoad:UIActivityIndicatorView = {
+        let activity = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
+      
+        activity.hidesWhenStopped = false
+        
+        return activity
+    }()
+    
     init() {
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
     }
@@ -27,9 +39,15 @@ class AppsDetail:UICollectionViewController,UICollectionViewDelegateFlowLayout{
         collectionView.dataSource = self
         collectionView.backgroundColor = .white
         navigationItem.largeTitleDisplayMode = .never
+        collectionView.showsHorizontalScrollIndicator = false
         collectionView.register(AppsDetailHeader.self, forCellWithReuseIdentifier: detailID)
         collectionView.register(AppsDescriptionCell.self, forCellWithReuseIdentifier: descriptionID)
         collectionView.register(AppsDetailScreenshotCell.self, forCellWithReuseIdentifier: screenshot)
+        collectionView.register(AppCommentCell.self, forCellWithReuseIdentifier: commentdID)
+        
+        view.addSubview(activityLoad)
+        activityLoad.center = self.view.center
+        activityLoad.startAnimating()
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -40,13 +58,14 @@ class AppsDetail:UICollectionViewController,UICollectionViewDelegateFlowLayout{
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         print("->>>",indexPath.item)
         if indexPath.item == 0 {
-            print("hihihi")
+          
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: detailID, for: indexPath) as! AppsDetailHeader
             cell.backgroundColor = .white
+            cell.app = self.app
             return cell
         }
         if indexPath.item == 1 {
-            print("oioi")
+          
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: descriptionID, for: indexPath) as! AppsDescriptionCell
             cell.backgroundColor = .white
             
@@ -59,11 +78,17 @@ class AppsDetail:UICollectionViewController,UICollectionViewDelegateFlowLayout{
             return cell
         }
         
+        if indexPath.item == 3 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: commentdID, for: indexPath) as! AppCommentCell
+          
+            return cell
+        }
+        
         return UICollectionViewCell()
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -79,6 +104,16 @@ class AppsDetail:UICollectionViewController,UICollectionViewDelegateFlowLayout{
         if indexPath.item == 2 {
             height = 550
         }
+        
+        if indexPath.item == 3{
+            height = 280
+        }
+        
         return .init(width: width, height: height)
+    }
+    
+    
+    func popularView(_ app: AppModel){
+        self.app = app
     }
 }

@@ -29,4 +29,13 @@ extension UILabel{
         return label
     }
     
+    static func setupBoldLabel(title:String,fontSize:CGFloat,numberOfLines:Int = 1) -> UILabel{
+        let label = UILabel()
+        label.text = title
+        label.font = UIFont.boldSystemFont(ofSize: fontSize)
+        label.numberOfLines = numberOfLines
+        
+        return label
+    }
+    
 }

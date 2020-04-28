@@ -9,13 +9,14 @@
 import UIKit
 
 class AppsViewController:UICollectionViewController,UICollectionViewDelegateFlowLayout{
+   
     let collectionID = "collectionID"
     let headerID = "headerID"
     var featuredApps:[FeaturedAppsModel] = []
     var appsGroupsArray:[AppsGroup] = []
     
     let appsGroupViewController = AppsGroupViewController()
-    let appsDetail = AppsDetail()
+   
     
     
     init(){
@@ -33,6 +34,7 @@ class AppsViewController:UICollectionViewController,UICollectionViewDelegateFlow
         collectionView.dataSource = self
         collectionView.register(AppHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerID)
         collectionView?.register(AppsGroupCell.self,forCellWithReuseIdentifier: collectionID)
+        
         
       
         fetchGroups(type: "top-apps-pagos")
@@ -69,8 +71,11 @@ extension AppsViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier:collectionID , for: indexPath) as! AppsGroupCell
         cell.appsGroup = self.appsGroupsArray[indexPath.item]
         cell.appsGroupViewController.callback = {(app) in
-          
-            self.navigationController?.pushViewController(self.appsDetail, animated: true)
+            
+             let appsDetail = AppsDetail()
+            appsDetail.popularView(app)
+            
+            self.navigationController?.pushViewController(appsDetail, animated: true)
         }
         return cell
     }

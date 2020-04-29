@@ -9,6 +9,13 @@
 import UIKit
 
 class AppCommentCell:UICollectionViewCell,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
+    var app:AppModel!{
+        didSet{
+            if app != nil {
+                self.collectionView.reloadData()
+            }
+        }
+    }
     let opinionsAndRatings:UILabel = .setupBoldLabel(title: "Opiniões e Avaliações", fontSize: 24)
     var collectionView:UICollectionView!
     let commentID = "COMMENT"
@@ -48,11 +55,17 @@ extension AppCommentCell{
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return self.app.comentarios?.count ?? 0 
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: commentID, for: indexPath) as! CommentCell
+        if let comment = self.app.comentarios?[indexPath.item]{
+            cell.comment = comment
+        }
+//        if let comentario =  self.app?.comentarios[indexPath.item]{
+//            print(comentario)
+//        }
         return cell
     }
     

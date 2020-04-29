@@ -14,7 +14,9 @@ struct AppModel:Decodable{
     var empresa:String
     var avaliacao:String
     var iconeUrl:String
+    var descricao:String?
     var screenshotUrls:[String]?
+    var comentarios:[AppCommentModel]?
 }
 
 

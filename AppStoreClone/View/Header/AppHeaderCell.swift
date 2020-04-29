@@ -21,7 +21,7 @@ class AppHeaderCell:UICollectionViewCell{
             
         }
     }
-    let companyName:UILabel = .setupLabel(title: "Nome da Empresa", fontSize: 12)
+    let companyName:UILabel = .setupLabel(title: "Nome da Empresa", fontSize: 12,numberOfLines: 0)
     let descriptionApp:UILabel = .setupLabel(title: "Descrição", fontSize: 20, numberOfLines: 2)
     let imageApp:UIImageView = .setupScreenshotImages()
     

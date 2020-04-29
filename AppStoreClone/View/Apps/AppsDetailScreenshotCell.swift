@@ -7,8 +7,17 @@
 //
 
 import UIKit
-
+import SDWebImage
 class AppsDetailScreenshotCell:UICollectionViewCell,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
+    
+    var app:AppModel!{
+        didSet{
+            if app != nil {
+                self.collectionView.reloadData()
+            }
+        }
+    }
+    var appById:AppModel!
     let screenshotID = "screenshotID"
     let previewLabel:UILabel = .setupBoldLabel(title: "Pré-visualização", fontSize: 24)
     
@@ -48,7 +57,11 @@ extension AppsDetailScreenshotCell{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: screenshotID, for: indexPath) as! ScreenshotCell
-       
+      
+        if let imageURL = self.app!.screenshotUrls?[indexPath.item]{
+            cell.screenshotImage.sd_setImage(with: URL(string: imageURL), completed: nil)
+        }
+        
         return cell
     }
     
@@ -61,12 +74,12 @@ extension AppsDetailScreenshotCell{
 
 class ScreenshotCell:UICollectionViewCell{
     let screenshotImage:UIImageView = .setupScreenshotImages()
+    var app:AppModel!
     override init(frame: CGRect) {
         super.init(frame:frame)
         
         addSubview(screenshotImage)
         screenshotImage.fillAllScreen()
-        screenshotImage.image = UIImage(named: "screenshot")
     }
     
     

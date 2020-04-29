@@ -22,9 +22,10 @@ class AppsDetailHeader:UICollectionViewCell{
         }
     }
     let iconImage:UIImageView = .setupIconImageView(height: 128, width: 128)
-    let appName:UILabel = .setupLabel(title: "app name", fontSize: 20)
-    let companyname:UILabel = .setupLabel(title: "company name", fontSize: 18)
+    let appName:UILabel = .setupLabel(title: "app name", fontSize: 20,numberOfLines: 0)
+    let companyname:UILabel = .setupLabel(title: "company name", fontSize: 14,numberOfLines: 0)
     let getButton:UIButton = .setupGetButton()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -41,11 +42,14 @@ class AppsDetailHeader:UICollectionViewCell{
         
         addSubview(stackView)
         stackView.fillAllScreen(padding: .init(top: 0, left: 20, bottom: 0, right: 20))
+        
+       
     }
     
     required init?(coder: NSCoder) {
         fatalError()
     }
     
+   
     
 }

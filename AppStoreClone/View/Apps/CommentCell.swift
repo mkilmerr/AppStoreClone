@@ -11,7 +11,16 @@ import UIKit
 
 class CommentCell:UICollectionViewCell{
     
-    let titleRating:UILabel = .setupBoldLabel(title: "Muito legal!", fontSize: 14)
+    var comment:AppCommentModel!{
+        didSet{
+            if comment != nil {
+                titleRating.text = comment.titulo
+                opinionDescription.text = comment.descricao
+                imageRating.image = UIImage(named: "avaliacao-\(comment.avaliacao)")
+            }
+        }
+    }
+    let titleRating:UILabel = .setupBoldLabel(title: "Muito legal!", fontSize: 14,numberOfLines: 0)
     
     let opinionDescription:UILabel = .setupLabel(title: "O app me deixou muito feliz com sua perfomace e funcionalidades", fontSize: 12, numberOfLines: 0)
     

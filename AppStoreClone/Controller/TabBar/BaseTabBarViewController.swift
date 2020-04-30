@@ -26,7 +26,7 @@ class BaseTabBarViewController: UITabBarController {
             appsViewController,
             searchViewController
         ]
-        selectedIndex = 2
+        selectedIndex = 0
         
       
     }

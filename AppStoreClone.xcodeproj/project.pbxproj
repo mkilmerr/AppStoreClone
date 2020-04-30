@@ -12,6 +12,8 @@
 		640AA6562454B58C006885EC /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640AA6552454B58C006885EC /* TodayViewController.swift */; };
 		640AA6582454C2DB006885EC /* AppsDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640AA6572454C2DB006885EC /* AppsDetail.swift */; };
 		640AA65A2454CA4B006885EC /* AppsDetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640AA6592454CA4B006885EC /* AppsDetailHeader.swift */; };
+		640AF3F4245B5520001675FC /* TodayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640AF3F3245B5520001675FC /* TodayCell.swift */; };
+		640AF3F6245B7087001675FC /* TodayModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640AF3F5245B7087001675FC /* TodayModal.swift */; };
 		640E03C5244FADCF0049BA25 /* AppsGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640E03C4244FADCF0049BA25 /* AppsGroup.swift */; };
 		6424EA772449F493006AFB5F /* AppsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6424EA762449F493006AFB5F /* AppsViewController.swift */; };
 		643A950B245255850073D122 /* AppsGroupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643A950A245255850073D122 /* AppsGroupService.swift */; };
@@ -74,6 +76,8 @@
 		640AA6552454B58C006885EC /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		640AA6572454C2DB006885EC /* AppsDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsDetail.swift; sourceTree = "<group>"; };
 		640AA6592454CA4B006885EC /* AppsDetailHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsDetailHeader.swift; sourceTree = "<group>"; };
+		640AF3F3245B5520001675FC /* TodayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCell.swift; sourceTree = "<group>"; };
+		640AF3F5245B7087001675FC /* TodayModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayModal.swift; sourceTree = "<group>"; };
 		640E03C4244FADCF0049BA25 /* AppsGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsGroup.swift; sourceTree = "<group>"; };
 		6424EA762449F493006AFB5F /* AppsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsViewController.swift; sourceTree = "<group>"; };
 		643A950A245255850073D122 /* AppsGroupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsGroupService.swift; sourceTree = "<group>"; };
@@ -186,6 +190,15 @@
 			isa = PBXGroup;
 			children = (
 				640AA6552454B58C006885EC /* TodayViewController.swift */,
+			);
+			path = Today;
+			sourceTree = "<group>";
+		};
+		640AF3F2245B5508001675FC /* Today */ = {
+			isa = PBXGroup;
+			children = (
+				640AF3F3245B5520001675FC /* TodayCell.swift */,
+				640AF3F5245B7087001675FC /* TodayModal.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -367,6 +380,7 @@
 		64FD119A24479FDC002C4E02 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				640AF3F2245B5508001675FC /* Today */,
 				647EE03B244E2EC3004D2A37 /* Apps */,
 				6468B87A244E091B00DBA875 /* Header */,
 				64FD11A02447A28D002C4E02 /* Search */,
@@ -652,6 +666,7 @@
 				64FD11A22447A2B9002C4E02 /* SearchCell.swift in Sources */,
 				64C553A024479B4500DA89FA /* SearchViewController.swift in Sources */,
 				640AA6562454B58C006885EC /* TodayViewController.swift in Sources */,
+				640AF3F6245B7087001675FC /* TodayModal.swift in Sources */,
 				6451090F2451A6CD007F8C8D /* AppsGroupEachCell.swift in Sources */,
 				64FD119F2447A05B002C4E02 /* UIImageView.swift in Sources */,
 				6451090D2451A1DB007F8C8D /* AppGroupsViewController.swift in Sources */,
@@ -660,6 +675,7 @@
 				640AA6582454C2DB006885EC /* AppsDetail.swift in Sources */,
 				64F879CC244F59750042BD25 /* FeaturedAppsModel.swift in Sources */,
 				64FD11A42447A46C002C4E02 /* UILabel.swift in Sources */,
+				640AF3F4245B5520001675FC /* TodayCell.swift in Sources */,
 				64C52E642458EECF0002935D /* AppDetailDelegate.swift in Sources */,
 				640AA65A2454CA4B006885EC /* AppsDetailHeader.swift in Sources */,
 				647EE03D244E2EDA004D2A37 /* AppHeaderCell.swift in Sources */,

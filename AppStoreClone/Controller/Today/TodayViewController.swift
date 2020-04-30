@@ -8,26 +8,59 @@
 
 import UIKit
 
-class TodayViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.view.backgroundColor = .white
-       let indicator = UIActivityIndicatorView.init(style: .large)
-             indicator.startAnimating()
-        indicator.center = self.view.center
-        self.view.addSubview(indicator)
+class TodayViewController: UICollectionViewController,UICollectionViewDelegateFlowLayout {
+    let todayCellID = "TODAY"
+    init() {
+        super.init(collectionViewLayout:UICollectionViewFlowLayout())
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
-    */
-
+    
+    override func viewDidLoad() {
+        collectionView.backgroundColor = .systemGroupedBackground
+        collectionView.register(TodayCell.self, forCellWithReuseIdentifier: todayCellID)
+        
+        navigationController?.navigationBar.isHidden = true
+    }
+}
+    
+extension TodayViewController{
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: todayCellID, for: indexPath) as! TodayCell
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return .init(width: view.bounds.width - 48, height:view.bounds.width + 48)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 24
+    }
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if let cellClicked = collectionView.cellForItem(at: indexPath){
+            if let frame = cellClicked.superview?.convert(cellClicked.frame, to: nil){
+               let todayModal = TodayModal()
+                navigationController?.navigationBar.isHidden = true
+                todayModal.modalPresentationStyle = .overCurrentContext
+                self.present(todayModal, animated: false){
+                    todayModal.frame = frame
+                    todayModal.animation()
+                }
+            }
+            
+            
+        }
+    }
 }

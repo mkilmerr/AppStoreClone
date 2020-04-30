@@ -12,7 +12,7 @@ extension UIImageView{
     
     static func setupIconImageView(height:CGFloat = 64, width:CGFloat = 64) -> UIImageView{
         let iconImageView = UIImageView()
-        
+        iconImageView.translatesAutoresizingMaskIntoConstraints = false
         iconImageView.setHeightAndWidth(size: .init(width: width, height: height))
         iconImageView.layer.borderWidth = 0.5
         iconImageView.backgroundColor = .purple
@@ -25,6 +25,7 @@ extension UIImageView{
     
     static func setupScreenshotImages() -> UIImageView{
         let screenshot = UIImageView()
+        screenshot.translatesAutoresizingMaskIntoConstraints = false
         screenshot.backgroundColor = .purple
         screenshot.layer.cornerRadius = 12
         screenshot.layer.borderColor = UIColor(white: 0.5, alpha: 1).cgColor
@@ -32,6 +33,19 @@ extension UIImageView{
         screenshot.contentMode = .scaleAspectFill
         return screenshot
         
+    }
+    
+    static func setupFeaturedImage(name:String? = nil) -> UIImageView{
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        if let name = name {
+            image.image = UIImage(named: name)
+        }
+        image.contentMode = .scaleAspectFill
+       
+//        image.layer.cornerRadius =
+        
+        return image
     }
     
 }

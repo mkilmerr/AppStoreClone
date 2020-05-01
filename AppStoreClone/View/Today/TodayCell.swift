@@ -15,8 +15,8 @@ class TodayCell:UICollectionViewCell{
             if let app = todayApp{
                 category.text = app.categoria
                 title.text = app.titulo
-                imageFeatured.image = UIImage(named: app.imagemUrl)
-                backgroundColor = UIColor.init(hexString: app.backgroundColor)
+                imageFeatured.image = UIImage(named: app.imagemUrl!)
+                backgroundColor = UIColor.init(hexString: app.backgroundColor!)
             }
         }
     }

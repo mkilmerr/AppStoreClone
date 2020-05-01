@@ -36,6 +36,7 @@ class TodayCell:UICollectionViewCell{
         addSubview(stackView)
         
         stackView.fillAllScreen(padding: .init(top: 24, left: 24, bottom: 24, right: 24))
+        
     }
     
     required init?(coder: NSCoder) {

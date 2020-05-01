@@ -21,4 +21,14 @@ extension UIButton{
         getButton.setHeightAndWidth(size: .init(width: 80, height: 32))
         return getButton
     }
+    
+    static func setupCloseButton() -> UIButton{
+        let closeButton = UIButton(type:.system)
+        closeButton.setImage(UIImage(named:"btn-fechar"),for:.normal)
+        
+        closeButton.layer.zPosition = 2 
+        
+        return closeButton
+    }
+    
 }

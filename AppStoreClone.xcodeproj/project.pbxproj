@@ -15,6 +15,7 @@
 		640AF3F4245B5520001675FC /* TodayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640AF3F3245B5520001675FC /* TodayCell.swift */; };
 		640AF3F6245B7087001675FC /* TodayModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640AF3F5245B7087001675FC /* TodayModal.swift */; };
 		640E03C5244FADCF0049BA25 /* AppsGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640E03C4244FADCF0049BA25 /* AppsGroup.swift */; };
+		641D17D1245BA0BC0085FB65 /* TodayDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641D17D0245BA0BC0085FB65 /* TodayDetail.swift */; };
 		6424EA772449F493006AFB5F /* AppsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6424EA762449F493006AFB5F /* AppsViewController.swift */; };
 		643A950B245255850073D122 /* AppsGroupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643A950A245255850073D122 /* AppsGroupService.swift */; };
 		6451090D2451A1DB007F8C8D /* AppGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6451090C2451A1DB007F8C8D /* AppGroupsViewController.swift */; };
@@ -22,7 +23,7 @@
 		6452C5F0213FEA1B64066C9F /* Pods_AppStoreClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67A3FD9615D746B52DEDF275 /* Pods_AppStoreClone.framework */; };
 		646479B5244FABF000515EAB /* AppsGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646479B4244FABF000515EAB /* AppsGroupCell.swift */; };
 		6468B87C244E0A2700DBA875 /* HeaderCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6468B87B244E0A2700DBA875 /* HeaderCollection.swift */; };
-		647BB22C2447CA3200685348 /* UIGetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647BB22B2447CA3200685348 /* UIGetButton.swift */; };
+		647BB22C2447CA3200685348 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647BB22B2447CA3200685348 /* UIButton.swift */; };
 		647BB22E2447CA9B00685348 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647BB22D2447CA9B00685348 /* UIColor.swift */; };
 		647EE03D244E2EDA004D2A37 /* AppHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647EE03C244E2ED9004D2A37 /* AppHeaderCell.swift */; };
 		6483FB982448FAFB00D3D374 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6483FB972448FAFB00D3D374 /* SearchService.swift */; };
@@ -79,13 +80,14 @@
 		640AF3F3245B5520001675FC /* TodayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCell.swift; sourceTree = "<group>"; };
 		640AF3F5245B7087001675FC /* TodayModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayModal.swift; sourceTree = "<group>"; };
 		640E03C4244FADCF0049BA25 /* AppsGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsGroup.swift; sourceTree = "<group>"; };
+		641D17D0245BA0BC0085FB65 /* TodayDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayDetail.swift; sourceTree = "<group>"; };
 		6424EA762449F493006AFB5F /* AppsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsViewController.swift; sourceTree = "<group>"; };
 		643A950A245255850073D122 /* AppsGroupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsGroupService.swift; sourceTree = "<group>"; };
 		6451090C2451A1DB007F8C8D /* AppGroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroupsViewController.swift; sourceTree = "<group>"; };
 		6451090E2451A6CD007F8C8D /* AppsGroupEachCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsGroupEachCell.swift; sourceTree = "<group>"; };
 		646479B4244FABF000515EAB /* AppsGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsGroupCell.swift; sourceTree = "<group>"; };
 		6468B87B244E0A2700DBA875 /* HeaderCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollection.swift; sourceTree = "<group>"; };
-		647BB22B2447CA3200685348 /* UIGetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGetButton.swift; sourceTree = "<group>"; };
+		647BB22B2447CA3200685348 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		647BB22D2447CA9B00685348 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		647EE03C244E2ED9004D2A37 /* AppHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHeaderCell.swift; sourceTree = "<group>"; };
 		6483FB972448FAFB00D3D374 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 			children = (
 				640AF3F3245B5520001675FC /* TodayCell.swift */,
 				640AF3F5245B7087001675FC /* TodayModal.swift */,
+				641D17D0245BA0BC0085FB65 /* TodayDetail.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -394,7 +397,7 @@
 				64FD119C2447A02F002C4E02 /* UIView.swift */,
 				64FD119E2447A05B002C4E02 /* UIImageView.swift */,
 				64FD11A32447A46C002C4E02 /* UILabel.swift */,
-				647BB22B2447CA3200685348 /* UIGetButton.swift */,
+				647BB22B2447CA3200685348 /* UIButton.swift */,
 				647BB22D2447CA9B00685348 /* UIColor.swift */,
 			);
 			path = "Extensions  ";
@@ -671,10 +674,11 @@
 				64FD119F2447A05B002C4E02 /* UIImageView.swift in Sources */,
 				6451090D2451A1DB007F8C8D /* AppGroupsViewController.swift in Sources */,
 				6483FB9A2449169F00D3D374 /* AppModel.swift in Sources */,
-				647BB22C2447CA3200685348 /* UIGetButton.swift in Sources */,
+				647BB22C2447CA3200685348 /* UIButton.swift in Sources */,
 				640AA6582454C2DB006885EC /* AppsDetail.swift in Sources */,
 				64F879CC244F59750042BD25 /* FeaturedAppsModel.swift in Sources */,
 				64FD11A42447A46C002C4E02 /* UILabel.swift in Sources */,
+				641D17D1245BA0BC0085FB65 /* TodayDetail.swift in Sources */,
 				640AF3F4245B5520001675FC /* TodayCell.swift in Sources */,
 				64C52E642458EECF0002935D /* AppDetailDelegate.swift in Sources */,
 				640AA65A2454CA4B006885EC /* AppsDetailHeader.swift in Sources */,

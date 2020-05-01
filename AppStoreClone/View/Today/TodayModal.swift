@@ -9,6 +9,8 @@
 import UIKit
 
 class TodayModal: UIViewController {
+    let closeButton:UIButton = .setupCloseButton()
+    var callback:(() -> ())?
     var uiview:UIView?
     var frame:CGRect?
     var topAnchor:NSLayoutConstraint?
@@ -21,19 +23,22 @@ class TodayModal: UIViewController {
         
         view.backgroundColor = .clear
         self.uiview = UIView()
+        
     }
     
     func animation(){
         guard let uiview = self.uiview else{return}
         guard let frame = self.frame else{return}
         
-        uiview.backgroundColor = .blue
         uiview.layer.cornerRadius = 16
         uiview.clipsToBounds = true
-       
+        
         view.addSubview(uiview)
+        self.addCloseButton()
+      
         insertAutoLayoutProperties(uiview, frame)
         uiViewAnimate()
+        
     }
     
     
@@ -51,7 +56,7 @@ class TodayModal: UIViewController {
         
         view.layoutIfNeeded()
         
-       
+        
     }
     
     func uiViewAnimate(){
@@ -68,5 +73,26 @@ class TodayModal: UIViewController {
         
     }
     
+    func buildAppTodayDetail(){
+        let todayDetail = TodayDetail()
+        self.uiview = todayDetail.view
+        self.animation()
+    }
+    
+    func addCloseButton(){
+        view.addSubview(closeButton)
+        closeButton.addTarget(self, action: #selector(handleCloseButton), for: .touchUpInside)
+        closeButton.alpha = 0
+        closeButton.setAutoLayoutProperties(top: view.safeAreaLayoutGuide.topAnchor, trailing: view.trailingAnchor, bottom: nil, leading: nil, padding: .init(top: 18, left: 0, bottom: 0, right: 24), size: .init(width: 32, height: 32))
+        
+        UIView.animate(withDuration: 0.3, delay: 0.2, options: .showHideTransitionViews, animations: {
+            self.closeButton.alpha = 1
+        }, completion: nil)
+    }
+    
+    @objc func handleCloseButton(){
+          self.callback?()
+        self.dismiss(animated: false, completion: nil)
+    }
     
 }

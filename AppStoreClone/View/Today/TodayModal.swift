@@ -9,6 +9,14 @@
 import UIKit
 
 class TodayModal: UIViewController {
+
+   var todayApp:TodayApp?{
+       didSet{
+           if todayApp != nil {
+               self.buildAppTodayDetail()
+           }
+       }
+   }
     let closeButton:UIButton = .setupCloseButton()
     var callback:(() -> ())?
     var uiview:UIView?
@@ -35,7 +43,7 @@ class TodayModal: UIViewController {
         
         view.addSubview(uiview)
         self.addCloseButton()
-      
+        
         insertAutoLayoutProperties(uiview, frame)
         uiViewAnimate()
         
@@ -66,7 +74,6 @@ class TodayModal: UIViewController {
             self.leadingAnchor?.constant = 0
             self.heightAnchor?.constant = self.view.frame.height
             self.widthAnchor?.constant = self.view.frame.width
-            
             self.uiview?.layer.cornerRadius = 0
             self.view.layoutIfNeeded()
         }, completion: nil)
@@ -75,6 +82,8 @@ class TodayModal: UIViewController {
     
     func buildAppTodayDetail(){
         let todayDetail = TodayDetail()
+        todayDetail.todayApp = self.todayApp
+        print(self.todayApp!)
         self.uiview = todayDetail.view
         self.animation()
     }
@@ -91,8 +100,26 @@ class TodayModal: UIViewController {
     }
     
     @objc func handleCloseButton(){
-          self.callback?()
-        self.dismiss(animated: false, completion: nil)
+        self.callback?()
+        self.closeAnimation()
+    }
+    
+    func closeAnimation(){
+        UIView.animate(withDuration: 0.3, delay: 0, options: .showHideTransitionViews, animations: {
+            
+            if let frame = self.frame{
+                self.topAnchor?.constant = frame.origin.y
+                self.leadingAnchor?.constant = frame.origin.x
+                self.heightAnchor?.constant = frame.size.height
+                self.widthAnchor?.constant = frame.size.width
+                
+                self.view.layoutIfNeeded()
+                
+            }
+            
+        }) { (true) in
+            self.dismiss(animated: false, completion: nil)
+        }
     }
     
 }

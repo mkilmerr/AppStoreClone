@@ -10,7 +10,7 @@ import UIKit
 
 class TodayViewController: UICollectionViewController,UICollectionViewDelegateFlowLayout {
     let todayCellID = "TODAY"
-    
+    var todayAppArray:[TodayApp]?
     init() {
         super.init(collectionViewLayout:UICollectionViewFlowLayout())
     }
@@ -24,10 +24,16 @@ class TodayViewController: UICollectionViewController,UICollectionViewDelegateFl
         collectionView.register(TodayCell.self, forCellWithReuseIdentifier: todayCellID)
         
         navigationController?.navigationBar.isHidden = true
-      
-        
-        
-        
+        self.addToday()
+    }
+    
+    
+    func addToday(){
+        TodayAppService.shared.fetchTodayApp { (app, error) in
+            if let app = app {
+                self.todayAppArray = app
+            }
+        }
     }
     
     
@@ -35,16 +41,15 @@ class TodayViewController: UICollectionViewController,UICollectionViewDelegateFl
 }
 
 extension TodayViewController{
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
+  
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return self.todayAppArray!.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: todayCellID, for: indexPath) as! TodayCell
+        cell.todayApp = self.todayAppArray?[indexPath.item]
         return cell
     }
     
@@ -56,19 +61,20 @@ extension TodayViewController{
         return 24
     }
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-           self.tabBarController?.tabBar.isHidden = true
+        self.tabBarController?.tabBar.isHidden = true
         if let cellClicked = collectionView.cellForItem(at: indexPath){
             if let frame = cellClicked.superview?.convert(cellClicked.frame, to: nil){
                 let todayModal = TodayModal()
-               
+                
                 
                 todayModal.modalPresentationStyle = .overCurrentContext
                 todayModal.callback = {
-                                   self.tabBarController?.tabBar.isHidden = false
-                               }
+                    self.tabBarController?.tabBar.isHidden = false
+                }
                 self.present(todayModal, animated: false){
                     todayModal.frame = frame
-                    todayModal.buildAppTodayDetail()
+                    todayModal.todayApp = self.todayAppArray![indexPath.item]
+                   
                 }
             }
             

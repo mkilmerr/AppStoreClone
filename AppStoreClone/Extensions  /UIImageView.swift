@@ -41,7 +41,7 @@ extension UIImageView{
         if let name = name {
             image.image = UIImage(named: name)
         }
-        image.contentMode = .scaleAspectFill
+        image.contentMode = .scaleAspectFit
        
 //        image.layer.cornerRadius =
         

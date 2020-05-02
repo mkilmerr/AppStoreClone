@@ -12,6 +12,7 @@ class TodayViewController: UICollectionViewController,UICollectionViewDelegateFl
     let todayCellID = "TODAY"
     let cellID = "cellID"
     var todayAppArray:[TodayApp]?
+    var today:[AppModel] = []
     init() {
         super.init(collectionViewLayout:UICollectionViewFlowLayout())
     }
@@ -21,18 +22,25 @@ class TodayViewController: UICollectionViewController,UICollectionViewDelegateFl
     }
     
     override func viewDidLoad() {
+          
         collectionView.backgroundColor = .systemGroupedBackground
         collectionView.register(TodayCell.self, forCellWithReuseIdentifier: todayCellID)
         collectionView.register(TodayMultipleCell.self, forCellWithReuseIdentifier: cellID)
         navigationController?.navigationBar.isHidden = true
         self.addToday()
+        self.fetchAllApps()
     }
+
     
     
     func addToday(){
         TodayAppService.shared.fetchTodayApp { (app, error) in
             if let app = app {
-                self.todayAppArray = app
+                DispatchQueue.main.async{
+                    self.todayAppArray = app
+                    self.collectionView.reloadData()
+                }
+                
             }
         }
     }
@@ -45,7 +53,7 @@ extension TodayViewController{
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.todayAppArray!.count
+        return self.todayAppArray?.count ?? 0
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -53,11 +61,14 @@ extension TodayViewController{
         if indexPath.item < 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: todayCellID, for: indexPath) as! TodayCell
             cell.todayApp = self.todayAppArray?[indexPath.item]
+            
+       
+            
             return cell
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! TodayMultipleCell
-           
-          
+            
+            cell.todayApp = self.todayAppArray?[indexPath.item]
             return cell
         }
         
@@ -67,12 +78,19 @@ extension TodayViewController{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return .init(width: view.bounds.width - 48, height:view.bounds.width + 48)
     }
+    func fetchAllApps(){
+            AllAppsService.shared.fetchAllApps { (apps, error) in
+                if let apps = apps {
+                    self.today = apps
+                }
+            }
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 24
     }
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.item < 2 {
+      
         self.tabBarController?.tabBar.isHidden = true
         if let cellClicked = collectionView.cellForItem(at: indexPath){
             if let frame = cellClicked.superview?.convert(cellClicked.frame, to: nil){
@@ -92,5 +110,5 @@ extension TodayViewController{
             
             
         }
-        } }
+        } 
 }

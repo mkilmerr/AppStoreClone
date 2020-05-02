@@ -27,7 +27,7 @@ class TodayMultipleTableCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
+       
         let headerStack = UIStackView(arrangedSubviews: [appName,companyName])
         headerStack.axis = .vertical
         headerStack.spacing = 2
@@ -37,9 +37,13 @@ class TodayMultipleTableCell: UITableViewCell {
         stackView.alignment = .center
         addSubview(stackView)
         stackView.fillAllScreen(padding: .init(top: 14, left: 0, bottom: 14, right: 14))
+       
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    
+    
 }

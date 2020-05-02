@@ -17,6 +17,10 @@ class TodayMultipleCell: UICollectionViewCell, UITableViewDelegate,UITableViewDa
             if let app = todayApp{
                 categoryLabel.text = app.categoria
                 descriptionlabel.text = app.descricao
+                tableView.reloadData()
+                
+                
+                
             }
         }
     }
@@ -26,15 +30,16 @@ class TodayMultipleCell: UICollectionViewCell, UITableViewDelegate,UITableViewDa
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-         backgroundColor = .white
+        backgroundColor = .white
         layer.cornerRadius = 16
         clipsToBounds = true
         tableView = UITableView()
         addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.separatorInset = UIEdgeInsets.init(top: 0, left: 64, bottom: 0, right: 0)
         tableView.register(TodayMultipleTableCell.self, forCellReuseIdentifier: tableID)
-       
+        tableView.allowsSelection = false
         let stackView = UIStackView(arrangedSubviews: [categoryLabel,descriptionlabel])
         stackView.spacing = 8
         stackView.axis = .vertical
@@ -59,13 +64,17 @@ class TodayMultipleCell: UICollectionViewCell, UITableViewDelegate,UITableViewDa
 
 extension TodayMultipleCell{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.todayApp?.apps?.count ?? 0 
-      }
-      
-      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return self.todayApp?.apps?.count ?? 0
+        
+        
+        
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: tableID, for: indexPath) as! TodayMultipleTableCell
         cell.app = self.todayApp?.apps?[indexPath.item]
+        
         return cell
-      }
-      
+    }
+    
 }

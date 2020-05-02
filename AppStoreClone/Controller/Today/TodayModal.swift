@@ -9,14 +9,20 @@
 import UIKit
 
 class TodayModal: UIViewController {
-
-   var todayApp:TodayApp?{
-       didSet{
-           if todayApp != nil {
-               self.buildAppTodayDetail()
-           }
-       }
-   }
+    
+    var todayApp:TodayApp?{
+        didSet{
+            if let todayApp = todayApp {
+                if todayApp.apps == nil {
+                    self.buildAppTodayDetail()
+                }else {
+                    self.addTodayTable()
+                }
+                
+                
+            }
+        }
+    }
     let closeButton:UIButton = .setupCloseButton()
     var callback:(() -> ())?
     var uiview:UIView?
@@ -85,6 +91,12 @@ class TodayModal: UIViewController {
         todayDetail.todayApp = self.todayApp
         print(self.todayApp!)
         self.uiview = todayDetail.view
+        self.animation()
+    }
+    
+    func addTodayTable(){
+        let todayMultipleTable = TodayMultipleViewController()
+        self.uiview = todayMultipleTable.view
         self.animation()
     }
     

@@ -53,7 +53,7 @@ class TodayCell:UICollectionViewCell{
         
         addSubview(stackView)
         
-//        stackView.fillAllScreen(padding: .init(top: 24, left: 24, bottom: 24, right: 24))
+
         stackView.setAutoLayoutProperties(top: self.safeAreaLayoutGuide.topAnchor, trailing: self.trailingAnchor, bottom: self.bottomAnchor, leading: self.leadingAnchor, padding: .init(top: 24, left: 24, bottom: 24, right: 24))
     }
     

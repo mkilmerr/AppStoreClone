@@ -11,7 +11,7 @@ import UIKit
 
 class AppsGroupViewController:UICollectionViewController,UICollectionViewDelegateFlowLayout{
     let cellGroupsID = "ID"
-    var appsGroupsArray:[AppsGroup] = []
+//    var appsGroupsArray:[AppsGroup] = []
     var apps:[AppModel] = []
     
     var callback:((AppModel)->())?

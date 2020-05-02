@@ -27,7 +27,7 @@ class CommentCell:UICollectionViewCell{
     let imageRating:UIImageView = {
         let image = UIImageView()
         image.setHeightAndWidth(size: .init(width: 120, height: 24))
-//        image.frame.size = .init(width: 20, height: 24)
+
         image.contentMode = .scaleAspectFit
        
         return image
@@ -53,9 +53,6 @@ class CommentCell:UICollectionViewCell{
         addSubview(commentStackView)
         
         commentStackView.setAutoLayoutProperties(top: topAnchor, trailing: trailingAnchor, bottom: bottomAnchor, leading: leadingAnchor, padding: .init(top: 20, left: 20, bottom: 20, right: 20))
-        
-      
-        
         
     
     }

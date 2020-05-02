@@ -46,7 +46,7 @@ class AppsDetailScreenshotCell:UICollectionViewCell,UICollectionViewDataSource,U
     }
 }
 
-
+//MARK:- CollectionView Methods
 extension AppsDetailScreenshotCell{
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -71,7 +71,7 @@ extension AppsDetailScreenshotCell{
     
 }
 
-
+//MARK:- ScreenshotCell Images
 class ScreenshotCell:UICollectionViewCell{
     let screenshotImage:UIImageView = .setupScreenshotImages()
     var app:AppModel!

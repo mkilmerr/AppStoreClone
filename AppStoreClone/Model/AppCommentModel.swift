@@ -14,10 +14,3 @@ struct AppCommentModel:Decodable{
     var avaliacao:Int
     var descricao:String?
 }
-
-/*
- "id": 4,
- "titulo": "Cumpre o que promete",
- "avaliacao": 3,
- "descricao": "Ao contrário do que se acredita, Lorem Ipsum não é simplesmente um texto randômico. Com mais de 2000 anos, suas raízes podem ser encontradas em uma obra de literatura latina clássica datada de 45 AC."
- */

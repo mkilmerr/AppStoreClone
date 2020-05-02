@@ -43,7 +43,18 @@ extension UIImageView{
         }
         image.contentMode = .scaleAspectFit
        
-//        image.layer.cornerRadius =
+
+        
+        return image
+    }
+    
+    static func setupTodayUserImage() -> UIImageView{
+        let image = UIImageView()
+        image.layer.cornerRadius = 18
+        image.contentMode = .scaleAspectFill
+        image.image = UIImage(named: "user-image")
+        image.clipsToBounds = true
+        image.setHeightAndWidth(size: .init(width: 36, height: 36))
         
         return image
     }

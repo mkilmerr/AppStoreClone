@@ -17,8 +17,6 @@ class SearchViewController: UITableViewController,UISearchBarDelegate {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-//        tableView.allowsSelection = false
-//        tableView.separatorStyle = .singleLine
         tableView.register(SearchCell.self, forCellReuseIdentifier: cellID)
         
         self.setupSearchField()

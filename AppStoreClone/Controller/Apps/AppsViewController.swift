@@ -41,7 +41,7 @@ class AppsViewController:UICollectionViewController,UICollectionViewDelegateFlow
         fetchGroups(type: "apps-que-amamos")
         fetchGroups(type: "top-apps-gratis")
     }
-    
+   
 }
 
 extension AppsViewController {
@@ -99,7 +99,7 @@ extension AppsViewController{
                 DispatchQueue.main.async {
                     self.appsGroupsArray.append(apps)
                     self.collectionView.reloadData()
-                    print(self.appsGroupsArray.count)
+                    
                 }
             }
         }

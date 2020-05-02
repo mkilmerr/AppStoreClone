@@ -17,11 +17,3 @@ struct FeaturedAppsModel:Decodable{
     var descricao:String
 }
 
-
-/*
- "id": 284882215,
- "nome": "Facebook",
- "empresa": "Facebook, Inc.",
- "imagemUrl": "https://api.euprogramador.app/app-store/v1/public/upload/capas/454638411-capa.jpeg",
- "descricao": "Manter-se com os amigos é mais rápido do que nunca."
- */

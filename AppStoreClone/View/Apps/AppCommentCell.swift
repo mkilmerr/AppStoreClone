@@ -50,6 +50,8 @@ class AppCommentCell:UICollectionViewCell,UICollectionViewDataSource,UICollectio
 }
 
 
+//MARK:- CollectionView Methods
+
 extension AppCommentCell{
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -63,9 +65,6 @@ extension AppCommentCell{
         if let comment = self.app.comentarios?[indexPath.item]{
             cell.comment = comment
         }
-//        if let comentario =  self.app?.comentarios[indexPath.item]{
-//            print(comentario)
-//        }
         return cell
     }
     

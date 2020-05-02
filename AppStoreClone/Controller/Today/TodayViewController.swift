@@ -11,8 +11,11 @@ import UIKit
 class TodayViewController: UICollectionViewController,UICollectionViewDelegateFlowLayout {
     let todayCellID = "TODAY"
     let cellID = "cellID"
+    let headerID = "headerID"
     var todayAppArray:[TodayApp]?
     var today:[AppModel] = []
+    
+    
     init() {
         super.init(collectionViewLayout:UICollectionViewFlowLayout())
     }
@@ -22,15 +25,22 @@ class TodayViewController: UICollectionViewController,UICollectionViewDelegateFl
     }
     
     override func viewDidLoad() {
-          
+        
         collectionView.backgroundColor = .systemGroupedBackground
         collectionView.register(TodayCell.self, forCellWithReuseIdentifier: todayCellID)
         collectionView.register(TodayMultipleCell.self, forCellWithReuseIdentifier: cellID)
+        collectionView.register(TodayHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerID)
         navigationController?.navigationBar.isHidden = true
         self.addToday()
         self.fetchAllApps()
+        
     }
+    
+    
+}
+//MARK:- Fetch Today App
 
+extension TodayViewController{
     
     
     func addToday(){
@@ -39,30 +49,43 @@ class TodayViewController: UICollectionViewController,UICollectionViewDelegateFl
                 DispatchQueue.main.async{
                     self.todayAppArray = app
                     self.collectionView.reloadData()
+                    
                 }
                 
             }
         }
     }
-    
-    
-    
 }
+
+//MARK:- CollectionView Methods
 
 extension TodayViewController{
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return .init(width: view.bounds.width, height: 90)
+    }
+
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerID, for: indexPath) as! TodayHeader
+    
+     
+
+        return header
+    }
+    
+
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.todayAppArray?.count ?? 0
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print(indexPath.item)
+        
         if indexPath.item < 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: todayCellID, for: indexPath) as! TodayCell
             cell.todayApp = self.todayAppArray?[indexPath.item]
             
-       
+            
             
             return cell
         }else{
@@ -72,25 +95,27 @@ extension TodayViewController{
             return cell
         }
         
-      
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return .init(width: view.bounds.width - 48, height:view.bounds.width + 48)
     }
     func fetchAllApps(){
-            AllAppsService.shared.fetchAllApps { (apps, error) in
-                if let apps = apps {
-                    self.today = apps
-                }
+        AllAppsService.shared.fetchAllApps { (apps, error) in
+            if let apps = apps {
+                self.today = apps
+                
             }
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 24
     }
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-      
+        
         self.tabBarController?.tabBar.isHidden = true
         if let cellClicked = collectionView.cellForItem(at: indexPath){
             if let frame = cellClicked.superview?.convert(cellClicked.frame, to: nil){
@@ -101,7 +126,11 @@ extension TodayViewController{
                 todayModal.callback = {
                     self.tabBarController?.tabBar.isHidden = false
                 }
-                self.present(todayModal, animated: false){
+                let nav = UINavigationController(rootViewController: todayModal)
+                nav.modalPresentationStyle = .overCurrentContext
+                nav.view.backgroundColor = .clear
+                
+                self.present(nav, animated: false){
                     todayModal.frame = frame
                     todayModal.todayApp = self.todayAppArray![indexPath.item]
                     
@@ -110,5 +139,5 @@ extension TodayViewController{
             
             
         }
-        } 
+    }
 }

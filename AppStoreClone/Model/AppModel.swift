@@ -19,17 +19,5 @@ struct AppModel:Decodable{
     var comentarios:[AppCommentModel]?
 }
 
-struct App:Decodable{
-var id:Int
-var nome:String
-var empresa:String
-var avaliacao:String
-var iconeUrl:String
-var descricao:String?
-var screenshotUrls:[String]?
-
-}
-
-
 
 

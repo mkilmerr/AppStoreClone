@@ -25,7 +25,7 @@ class AppHeader:UICollectionReusableView,UICollectionViewDelegate,UICollectionVi
         self.collectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         self.collectionView.register(AppHeaderCell.self, forCellWithReuseIdentifier: headerID)
         self.collectionView.decelerationRate = .fast
-        self.collectionView.showsVerticalScrollIndicator = false
+        self.collectionView.showsHorizontalScrollIndicator = false
         addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.fillAllScreen()

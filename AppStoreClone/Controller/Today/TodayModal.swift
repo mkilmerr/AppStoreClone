@@ -23,6 +23,8 @@ class TodayModal: UIViewController {
             }
         }
     }
+    let todayMultipleTable = TodayMultipleViewController()
+    let todayDetail = TodayDetail()
     let closeButton:UIButton = .setupCloseButton()
     var callback:(() -> ())?
     var uiview:UIView?
@@ -38,6 +40,14 @@ class TodayModal: UIViewController {
         view.backgroundColor = .clear
         self.uiview = UIView()
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = false
     }
     
     func animation(){
@@ -87,15 +97,22 @@ class TodayModal: UIViewController {
     }
     
     func buildAppTodayDetail(){
-        let todayDetail = TodayDetail()
+        
         todayDetail.todayApp = self.todayApp
-        print(self.todayApp!)
+       
         self.uiview = todayDetail.view
         self.animation()
     }
     
     func addTodayTable(){
-        let todayMultipleTable = TodayMultipleViewController()
+        todayMultipleTable.todayApp = self.todayApp
+        todayMultipleTable.handleClick = { app in
+            let detail = AppsDetail()
+            detail.title = app.nome
+            detail.appID = app.id
+            detail.app = app
+            self.navigationController?.pushViewController(detail, animated: true)
+        }
         self.uiview = todayMultipleTable.view
         self.animation()
     }

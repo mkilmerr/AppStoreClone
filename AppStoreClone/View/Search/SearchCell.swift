@@ -35,7 +35,7 @@ class SearchCell:UITableViewCell{
     
     let iconImageView:UIImageView = .setupIconImageView()
     let titleLabel:UILabel = .setupLabel(title: "Name of app", fontSize: 18, numberOfLines: 2)
-    let companyLabel:UILabel = .setupLabel(title: "Company", fontSize: 14)
+    let companyLabel:UILabel = .setupLabel(title: "Company", fontSize: 14,numberOfLines: 0)
     let getButton:UIButton = .setupGetButton()
     let firstScreenshot:UIImageView = .setupScreenshotImages()
     let secondScreenshot:UIImageView = .setupScreenshotImages()
@@ -44,6 +44,8 @@ class SearchCell:UITableViewCell{
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style:style,reuseIdentifier:reuseIdentifier)
+        
+        self.selectionStyle = .none
         
         let titleAndCompanyStackView = UIStackView(arrangedSubviews: [titleLabel,companyLabel])
      
@@ -70,19 +72,3 @@ class SearchCell:UITableViewCell{
     }
 }
 
-
-/*
- DispatchQueue.main.async {
-     if let url = URL(string: self.apps.iconeUrl) {
-         do{
-             let data = try Data(contentsOf: url)
-             self.iconImageView.image = UIImage(data: data)
-         }catch{
-             print(error)
-         }
-     }
-     
-    
-     
- }
- */

@@ -19,10 +19,7 @@ class AppsDetail:UICollectionViewController,UICollectionViewDelegateFlowLayout{
     
     var appID:Int!{
         didSet{
-            
-            
             self.fetchID(id: appID)
-            
         }
     }
     
@@ -54,19 +51,23 @@ class AppsDetail:UICollectionViewController,UICollectionViewDelegateFlowLayout{
         collectionView.register(AppsDescriptionCell.self, forCellWithReuseIdentifier: descriptionID)
         collectionView.register(AppsDetailScreenshotCell.self, forCellWithReuseIdentifier: screenshot)
         collectionView.register(AppCommentCell.self, forCellWithReuseIdentifier: commentdID)
-        
         view.addSubview(activityLoad)
         activityLoad.center = self.view.center
         activityLoad.startAnimating()
     }
     
+}
+
+//MARK:- CollectionView Methods
+
+extension AppsDetail{
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("->>>",indexPath.item)
+        
         if indexPath.item == 0 {
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: detailID, for: indexPath) as! AppsDetailHeader
@@ -124,8 +125,11 @@ class AppsDetail:UICollectionViewController,UICollectionViewDelegateFlowLayout{
         
         return .init(width: width, height: height)
     }
-    
-    
+}
+
+//MARK:- PopularView and Fetch App By ID
+
+extension AppsDetail{
     func popularView(_ app: AppModel){
         self.app = app
     }
@@ -133,10 +137,10 @@ class AppsDetail:UICollectionViewController,UICollectionViewDelegateFlowLayout{
     
     
     func fetchID(id:Int){
-        print(id)
+        
         AppByIDService.shared.fetchByID(id: id) { (appByID, error) in
             if error != nil {
-                return 
+                return
             }
             if let app = appByID {
                 DispatchQueue.main.async {
